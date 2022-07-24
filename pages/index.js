@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import balthazar from "../public/balthazar.png";
 import { useInView } from "react-intersection-observer";
-import 'animate.css';
+import "animate.css";
 
 export default function Home() {
   const [ref1, inView1] = useInView({ triggerOnce: true, threshold: 0 });
@@ -28,12 +28,15 @@ export default function Home() {
             />
           </div>
           <div className="md:ml-4 block">
-            <span className="text-2xl md:text-4xl md:leading-12 type" style={{ "--n": 50 }}>
+            <span
+              className="text-2xl md:text-4xl md:leading-12 type"
+              style={{ "--n": 50 }}
+            >
               Hi there, I am Ashwini.
               <br /> Virtually known as quibler
             </span>
             <h5 className="mt-4 text-2xl about">
-              I am a {" "}
+              I am a{" "}
               <span className="type2">
                 <span>
                   <span>CSS Hacker</span>
@@ -42,31 +45,68 @@ export default function Home() {
                 </span>
               </span>
             </h5>
+            <span className="mt-4 text-black scrollNoti">(Keep scrolling)</span>
           </div>
         </section>
         <section className="grid grid-row-2 gap-4 place-content-center mx-auto w-[calc(100vw-2rem)] h-screen snap-start snap-always">
           <h1 ref={ref1} className={`mx-auto text-4xl block`}>
             <span className={inView1 ? "type" : ""} style={{ "--n": 18 }}>
-              I am interseted in
+              I am interested in
             </span>
           </h1>
           <ul className="grid grid-row-6">
-            <li className={`focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-xl w-max px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 ${inView1 ? "animate__animated animate__fadeInRight animate__delay-2s" : ""}`}>
+            <li
+              className={`focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-xl w-max px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 ${
+                inView1
+                  ? "animate__animated animate__fadeInRight animate__delay-2s"
+                  : ""
+              }`}
+            >
               Coding
             </li>
-            <li className={`focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-xl w-max px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 ${inView1 ? "animate__animated animate__fadeInRight animate__delay-2s" : ""}`}>
+            <li
+              className={`focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-xl w-max px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 ${
+                inView1
+                  ? "animate__animated animate__fadeInRight animate__delay-2s"
+                  : ""
+              }`}
+            >
               Design
             </li>
-            <li className={`focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-xl w-max px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 ${inView1 ? "animate__animated animate__fadeInRight animate__delay-2s" : ""}`}>
+            <li
+              className={`focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-xl w-max px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 ${
+                inView1
+                  ? "animate__animated animate__fadeInRight animate__delay-2s"
+                  : ""
+              }`}
+            >
               Economics
             </li>
-            <li className={`focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-xl w-max px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 ${inView1 ? "animate__animated animate__fadeInRight animate__delay-2s" : ""}`}>
+            <li
+              className={`focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-xl w-max px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 ${
+                inView1
+                  ? "animate__animated animate__fadeInRight animate__delay-2s"
+                  : ""
+              }`}
+            >
               Yoga
             </li>
-            <li className={`focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-xl w-max px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 ${inView1 ? "animate__animated animate__fadeInRight animate__delay-2s" : ""}`}>
+            <li
+              className={`focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-xl w-max px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 ${
+                inView1
+                  ? "animate__animated animate__fadeInRight animate__delay-2s"
+                  : ""
+              }`}
+            >
               Swimming
             </li>
-            <li className={`focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-xl w-max px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 ${inView1 ? "animate__animated animate__fadeInRight animate__delay-2s" : ""}`}>
+            <li
+              className={`focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-xl w-max px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 ${
+                inView1
+                  ? "animate__animated animate__fadeInRight animate__delay-2s"
+                  : ""
+              }`}
+            >
               Travelling
             </li>
           </ul>
@@ -78,7 +118,13 @@ export default function Home() {
               My latest work!
             </span>
           </h1>
-          <div className={`max-w-md bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ${inView2 ? "animate__animated animate__fadeIn animate__delay-2s" : ""}`}>
+          <div
+            className={`max-w-md bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ${
+              inView2
+                ? "animate__animated animate__fadeIn animate__delay-2s"
+                : ""
+            }`}
+          >
             <a href="#">
               <Image className="rounded-t-lg" src={balthazar} />
             </a>
@@ -122,7 +168,13 @@ export default function Home() {
               ...and a few other projects I made, for fun and learning
             </span>
           </h1>
-          <ul className={`grid grid-row-5 gap-4 max-w-md mt-4 ${inView3 ? "animate__animated animate__fadeInUp animate__delay-5s" : ""}`}>
+          <ul
+            className={`grid grid-row-5 gap-4 max-w-md mt-4 ${
+              inView3
+                ? "animate__animated animate__fadeInUp animate__delay-5s"
+                : ""
+            }`}
+          >
             <li>
               <h5 className="text-2xl">Quiz App using PERN stack</h5>
               <p>

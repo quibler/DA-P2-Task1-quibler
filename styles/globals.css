@@ -93,3 +93,8 @@ a {
 .animate__fadeIn {
   animation-delay: 0.4;
 }
+.scrollNoti {
+  opacity: 0;
+  transform: translateY(3rem);
+  animation: fadeInUp 2s ease 12s forwards;
+}
