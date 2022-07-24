@@ -50,7 +50,7 @@ export default function Home() {
         </section>
         <section className="grid grid-row-2 gap-4 place-content-center mx-auto w-[calc(100vw-2rem)] h-screen snap-start snap-always">
           <h1 ref={ref1} className={`mx-auto text-4xl block`}>
-            <span className={inView1 ? "type" : ""} style={{ "--n": 18 }}>
+            <span className={inView1 ? "type" : "hidden"} style={{ "--n": 18 }}>
               I am interested in
             </span>
           </h1>
@@ -113,7 +113,7 @@ export default function Home() {
         </section>
         <section className="grid grid-row-2 gap-4 place-content-center mx-auto w-[calc(100vw-2rem)] h-screen snap-start snap-always">
           <h1 ref={ref2} className="text-4xl w-max">
-            <span className={inView2 ? "type" : ""} style={{ "--n": 15 }}>
+            <span className={inView2 ? "type" : "hidden"} style={{ "--n": 15 }}>
               {" "}
               My latest work!
             </span>
@@ -164,7 +164,7 @@ export default function Home() {
         </section>
         <section className="grid grid-row-2 gap-4 place-content-center mx-auto w-[calc(100vw-2rem)] h-screen snap-start snap-always">
           <h1 ref={ref3} className="text-4xl block">
-            <span className={inView3 ? "type" : ""} style={{ "--n": 56 }}>
+            <span className={inView3 ? "type" : "hidden"} style={{ "--n": 56 }}>
               ...and a few other projects I made, for fun and learning
             </span>
           </h1>
