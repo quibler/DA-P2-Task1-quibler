@@ -34,7 +34,7 @@ export default function Home() {
             </span>
             <h5 className="mt-4 text-2xl about">
               I am a {" "}
-              <span class="type2">
+              <span className="type2">
                 <span>
                   <span>CSS Hacker</span>
                   <span>passionate web developer</span>
