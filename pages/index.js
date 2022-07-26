@@ -5,7 +5,8 @@ import balthazar from "../public/balthazar.png";
 import { useInView } from "react-intersection-observer";
 import "animate.css";
 
-export default function Home() {
+export default function Home({profiles}) {
+  console.log(profiles);
   const [ref1, inView1] = useInView({ triggerOnce: true, threshold: 0 });
   const [ref2, inView2] = useInView({ triggerOnce: true, threshold: 1 });
   const [ref3, inView3] = useInView({ triggerOnce: true, threshold: 1 });
@@ -125,11 +126,17 @@ export default function Home() {
                 : ""
             }`}
           >
-            <a href="#">
-              <Image className="rounded-t-lg" src={balthazar} />
+            <a href="https://blackmarket.buddiezznft.club/">
+              <Image
+                className="rounded-t-lg"
+                src="https://i.imgur.com/dJaWApr.png"
+                alt="balthazar"
+                width="786px"
+                height="717px"
+              />
             </a>
             <div className="p-5">
-              <a href="#">
+              <a href="https://blackmarket.buddiezznft.club/">
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                   BuddiezzNFT Merch Webshop
                 </h5>
@@ -206,4 +213,19 @@ export default function Home() {
       </div>
     </div>
   );
+}
+export async function getServerSideProps(ctx) {
+  // get the current environment
+  let dev = process.env.NODE_ENV !== "production";
+  let { DEV_URL, PROD_URL } = process.env;
+
+  // request posts from api
+  let response = await fetch(`${dev ? DEV_URL : PROD_URL}/api/profiles`);
+  // extract the data
+  let data = await response.json();
+  return {
+    props: {
+      proiles: data["message"],
+    },
+  };
 }
