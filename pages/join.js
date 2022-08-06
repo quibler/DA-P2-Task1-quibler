@@ -1,11 +1,15 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState, useRef, useReducer } from "react";
 import ScrollProgressBar from "../components/ScrollProgressBar";
 
 const NewDogeProfile = () => {
+  const router = useRouter();
+
   const interestRef = useRef(null);
   const expTitleRef = useRef(null);
 
-  const [name, setName] = useState("");
+  const [name, setName] = useState();
   const [nickname, setNickname] = useState("");
   const [interests, setInterests] = useState([]);
   const [interestInput, setInterestInput] = useState("");
@@ -89,13 +93,20 @@ const NewDogeProfile = () => {
     };
     const response = await fetch(endpoint, options);
     const result = await response.json();
-    console.log(result);
+    router.push("/");
   };
 
   return (
     <>
       <ScrollProgressBar />
-      <form className="h-full text-2xl">
+
+      <Link href="/">
+        <button className="fixed top-4 left-4 text-white text-xl bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 rounded-lg px-5 py-1.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+          Home
+        </button>
+      </Link>
+
+      <form className="h-full text-2xl font-mono">
         <section className="h-full grid place-content-center snap-start snap-always">
           <label>Name</label>
           <input
@@ -230,7 +241,7 @@ const NewDogeProfile = () => {
         </section>
         <section className="h-full grid place-content-center snap-start snap-always">
           <button className="pixel" type="submit" onClick={recruitDoge}>
-            <p>Recruit Doge</p>
+            <p>Create Profile</p>
           </button>
         </section>
       </form>

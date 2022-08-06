@@ -4,7 +4,10 @@ import Profile from "../../../models/ProfileModel";
 dbConnect();
 
 export default async function handler(req, res) {
-  const { method } = req;
+    const {
+        query: { nickname },
+        method
+    } = req;
 
   switch (method) {
     case "GET":
@@ -15,14 +18,17 @@ export default async function handler(req, res) {
         res.status(400).json({ success: false });
       }
       break;
-    case "POST":
+    case "DELETE":
       try {
-        console.log("creating document");
-        const profile = await Profile.create(req.body);
-        console.log("document created!");
-        res.status(201).json({ success: true, data: profile });
+        const deletedProfile = await Profile.deleteOne({ nickname: nickname });
+
+        if (!deletedProfile) {
+          return res.status(400).json({ success: false });
+        }
+
+        res.status(200).json({ success: true, data: {} });
       } catch (error) {
-        res.status(400).json({ success: false, error: error });
+        res.status(400).json({ success: false });
       }
       break;
     default:
@@ -30,12 +36,6 @@ export default async function handler(req, res) {
       break;
   }
 }
-
-export async function getProfile(nick) {
-  const profile = await Profile.findOne({ nickname: nick });
-  return profile;
-}
-
 export async function getData() {
   const profiles = await Profile.find();
   return profiles;

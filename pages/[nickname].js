@@ -3,6 +3,8 @@ import { useInView } from "react-intersection-observer";
 import "animate.css";
 import { getProfile } from "./api/profiles";
 import ScrollProgressBar from "../components/ScrollProgressBar";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const ProfilePage = ({ profile }) => {
   const { name, nickname, interests, latest, experience } = profile;
@@ -12,18 +14,7 @@ const ProfilePage = ({ profile }) => {
   const [ref1, inView1] = useInView({ triggerOnce: true, threshold: 0 });
   const [ref2, inView2] = useInView({ triggerOnce: true, threshold: 1 });
   const [ref3, inView3] = useInView({ triggerOnce: true, threshold: 1 });
-  const interestsListItems = interests.map((interest, index) => (
-    <li
-      key={index}
-      className={`focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-xl w-max px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 ${
-        inView1
-          ? "animate__animated animate__fadeInRight animate__delay-2s"
-          : ""
-      }`}
-    >
-      {interest}
-    </li>
-  ));
+  const router = useRouter();
   const handleImgUrl = (string) => {
     let url;
 
@@ -35,9 +26,32 @@ const ProfilePage = ({ profile }) => {
 
     return url.protocol === "http:" || url.protocol === "https:";
   };
+  const deleteProfile = async () => {
+    const nickname = router.query.nickname;
+    try {
+      const deleted = await fetch(`http://localhost:3000/api/profiles/${nickname}`, {
+        method: "Delete",
+      });
+
+      router.push("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="w-full h-full font-mono">
       <ScrollProgressBar />
+      <Link href="/">
+        <button className="fixed top-4 left-4 text-white text-xl bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 rounded-lg px-5 py-1.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+          Home
+        </button>
+      </Link>
+      <button
+        className="fixed top-4 right-4 bg-red-700 px-5 py-2 rounded-lg"
+        onClick={deleteProfile}
+      >
+        Delete
+      </button>
       <section className="flex flex-col md:flex-row justify-center md:items-center w-[calc(100vw-4rem)] h-screen mx-auto snap-start snap-always">
         <div className="relative mb-4 md:mb-0 w-40 h-40">
           <Image
@@ -73,7 +87,20 @@ const ProfilePage = ({ profile }) => {
             I am passionate about!
           </span>
         </h1>
-        <ul className="grid grid-row-6">{interestsListItems}</ul>
+        <ul className="grid grid-row-6">
+          {interests.map((interest, index) => (
+            <li
+              key={index}
+              className={`focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-xl w-max px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 ${
+                inView1
+                  ? "animate__animated animate__fadeInRight animate__delay-2s"
+                  : ""
+              }`}
+            >
+              {interest}
+            </li>
+          ))}
+        </ul>
       </section>
       <section className="grid grid-row-2 gap-4 place-content-center mx-auto w-[calc(100vw-2rem)] h-screen snap-start snap-always">
         <h1 ref={ref2} className="text-4xl w-max">
