@@ -1,18 +1,33 @@
 import { Schema, model, models } from "mongoose";
 
 const profileSchema = new Schema({
-  name: String,
+  name: {
+    type: String,
+    default: "Anon",
+  },
   nickname: {
     type: String,
     required: true,
     unique: true,
   },
-  interests: [String],
+  interests: {
+    type: [String],
+    required: true,
+  },
   latest: {
-    title: String,
-    description: String,
+    title: {
+      type: String,
+      default: "Comming soon!",
+    },
+    description: {
+      type: String,
+      default: "Comming soon!",
+    },
     img: String,
-    url: String,
+    url: {
+      type: String,
+      default: "",
+    },
   },
   experience: [
     {

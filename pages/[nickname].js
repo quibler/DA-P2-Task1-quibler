@@ -1,17 +1,20 @@
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import "animate.css";
+import { getProfile } from "./api/profiles";
+import ScrollProgressBar from "../components/ScrollProgressBar";
 
 const ProfilePage = ({ profile }) => {
   const { name, nickname, interests, latest, experience } = profile;
   const introLength = 35 + nickname.length + name.length;
-
+  const defaultImg =
+    "https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80";
   const [ref1, inView1] = useInView({ triggerOnce: true, threshold: 0 });
   const [ref2, inView2] = useInView({ triggerOnce: true, threshold: 1 });
   const [ref3, inView3] = useInView({ triggerOnce: true, threshold: 1 });
-
-  const interestsListItems = interests.map((interest) => (
+  const interestsListItems = interests.map((interest, index) => (
     <li
+      key={index}
       className={`focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-xl w-max px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 ${
         inView1
           ? "animate__animated animate__fadeInRight animate__delay-2s"
@@ -27,8 +30,20 @@ const ProfilePage = ({ profile }) => {
       <p>{exp.description}</p>
     </li>
   ));
+  const handleImgUrl = (string) => {
+    let url;
+
+    try {
+      url = new URL(string);
+    } catch (_) {
+      return false;
+    }
+
+    return url.protocol === "http:" || url.protocol === "https:";
+  };
   return (
     <div className="w-full h-full font-mono">
+      <ScrollProgressBar />
       <section className="flex flex-col md:flex-row justify-center md:items-center w-[calc(100vw-4rem)] h-screen mx-auto snap-start snap-always">
         <div className="relative mb-4 md:mb-0 w-40 h-40">
           <Image
@@ -55,7 +70,7 @@ const ProfilePage = ({ profile }) => {
               </span>
             </span>
           </h5>
-          <span className="mt-4 text-black scrollNoti">(Keep scrolling)</span>
+          {/* <span className="mt-4 text-black scrollNoti">(Keep scrolling)</span> */}
         </div>
       </section>
       <section className="grid grid-row-2 gap-4 place-content-center mx-auto w-[calc(100vw-2rem)] h-screen snap-start snap-always">
@@ -81,7 +96,7 @@ const ProfilePage = ({ profile }) => {
           <a href={latest.url}>
             <Image
               className="rounded-t-lg"
-              src={latest.img}
+              src={handleImgUrl(latest.img) ? latest.img : defaultImg}
               alt="balthazar"
               width="786px"
               height="717px"
@@ -141,3 +156,13 @@ const ProfilePage = ({ profile }) => {
 };
 
 export default ProfilePage;
+
+export async function getServerSideProps(ctx) {
+  const nickname = ctx.params.nickname;
+  const data = await getProfile(nickname);
+  return {
+    props: {
+      profile: JSON.parse(JSON.stringify(data)),
+    },
+  };
+}

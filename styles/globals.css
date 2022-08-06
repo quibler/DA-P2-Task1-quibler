@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -9,12 +9,13 @@ html {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
 }
+
 #__next,
 html,
 body {
   padding: 0;
   height: 100vh;
-  font-family: 'VT323', monospace;
+  font-family: "VT323";
   background: #005f6b;
   color: #00dffc;
 }
@@ -29,23 +30,25 @@ a {
 }
 
 .type {
-  color:#0000;
-  background:
-    linear-gradient(-90deg,#00DFFC 5px,#0000 0) 10px 0,
-    linear-gradient(#00DFFC 0 0) 0 0;
-  background-size:calc(var(--n)*1ch) 200%;
-  -webkit-background-clip:padding-box,text;
-  background-clip:padding-box,text;
-  background-repeat:no-repeat;
-  animation: 
-   b .3s infinite steps(1),   
-   t calc(var(--n)*.1s) steps(var(--n)) forwards;
+  color: #0000;
+  background: linear-gradient(-90deg, #00dffc 5px, #0000 0) 10px 0,
+    linear-gradient(#00dffc 0 0) 0 0;
+  background-size: calc(var(--n) * 1ch) 200%;
+  -webkit-background-clip: padding-box, text;
+  background-clip: padding-box, text;
+  background-repeat: no-repeat;
+  animation: b 0.3s infinite steps(1),
+    t calc(var(--n) * 0.1s) steps(var(--n)) forwards;
 }
-@keyframes t{
-  from {background-size:0 200%}
+@keyframes t {
+  from {
+    background-size: 0 200%;
+  }
 }
-@keyframes b{
-  50% {background-position:0 -100%,0 0}
+@keyframes b {
+  50% {
+    background-position: 0 -100%, 0 0;
+  }
 }
 .about {
   opacity: 0;
@@ -59,37 +62,45 @@ a {
   }
 }
 .type2 {
-  display:inline-block;
+  display: inline-block;
 }
 .type2 > span {
-  display:grid;
+  display: grid;
   overflow: hidden;
-  height:1.2em;
+  height: 1.2em;
 }
 .type2 span span {
-  width:0%;
-  max-width:max-content;
+  width: 0%;
+  max-width: max-content;
   overflow: hidden;
-  height:inherit;
-  word-break:break-all;
-  animation:
-    c 0.5s infinite steps(1),  
-    t2 2s linear infinite alternate,
+  height: inherit;
+  word-break: break-all;
+  animation: c 0.5s infinite steps(1), t2 2s linear infinite alternate,
     m 12s steps(3) infinite;
 }
 .type2 span span:before {
-  content:" ";
-  display:inline-block;
+  content: " ";
+  display: inline-block;
 }
-@keyframes t2{
-  90%,100% {width:100%}
+@keyframes t2 {
+  90%,
+  100% {
+    width: 100%;
+  }
 }
-@keyframes c{
-  0%,100%{box-shadow:5px 0 0 #0000}
-  50%    {box-shadow:5px 0 0 red  }
+@keyframes c {
+  0%,
+  100% {
+    box-shadow: 5px 0 0 #0000;
+  }
+  50% {
+    box-shadow: 5px 0 0 red;
+  }
 }
-@keyframes m{
-  100% {transform:translateY(-300%)}
+@keyframes m {
+  100% {
+    transform: translateY(-300%);
+  }
 }
 .animate__fadeIn {
   animation-delay: 0.4;
@@ -98,4 +109,73 @@ a {
   opacity: 0;
   transform: translateY(3rem);
   animation: fadeInUp 2s ease 12s forwards;
+}
+.pixel {
+  font-size: 25px;
+  color: white;
+  height: auto;
+  margin: 10px;
+
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.pixel:active {
+  top: 2px;
+}
+
+.pixel {
+  line-height: 0;
+
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges; /* Firefox */
+  image-rendering: -o-crisp-edges; /* Opera */
+  image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming) */
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+
+  border-style: solid;
+  border-width: 20px;
+  -moz-border-image: url(https://i.imgur.com/sREM8Yn.png) 20 stretch;
+  -webkit-border-image: url(https://i.imgur.com/sREM8Yn.png) 20 stretch;
+  -o-border-image: url(https://i.imgur.com/sREM8Yn.png) 20 stretch;
+  border-image: url(https://i.imgur.com/sREM8Yn.png) 20 stretch;
+}
+
+.pixel p {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  width: auto;
+  text-align: center;
+  margin: -20px -20px;
+  line-height: 20px;
+  padding: 10px 20px;
+
+  background: #000000;
+  background: linear-gradient(135deg, transparent 10px, #000000 0) top left,
+    linear-gradient(225deg, transparent 10px, #000000 0) top right,
+    linear-gradient(315deg, transparent 10px, #000000 0) bottom right,
+    linear-gradient(45deg, transparent 10px, #000000 0) bottom left;
+  background-size: 50% 50%;
+  background-repeat: no-repeat;
+  background-image: radial-gradient(
+      circle at 0 0,
+      rgba(204, 0, 0, 0) 14px,
+      #000000 15px
+    ),
+    radial-gradient(circle at 100% 0, rgba(204, 0, 0, 0) 14px, #000000 15px),
+    radial-gradient(circle at 100% 100%, rgba(204, 0, 0, 0) 14px, #000000 15px),
+    radial-gradient(circle at 0 100%, rgba(204, 0, 0, 0) 14px, #000000 15px);
 }
