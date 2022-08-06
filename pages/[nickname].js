@@ -24,12 +24,6 @@ const ProfilePage = ({ profile }) => {
       {interest}
     </li>
   ));
-  const expLI = experience.map((exp) => (
-    <li>
-      <h5 className="text-2xl">{exp.title}</h5>
-      <p>{exp.description}</p>
-    </li>
-  ));
   const handleImgUrl = (string) => {
     let url;
 
@@ -148,7 +142,12 @@ const ProfilePage = ({ profile }) => {
               : ""
           }`}
         >
-          {expLI}
+          {experience.map((exp, index) => (
+            <li key={index}>
+              <h5 className="text-2xl">{exp.title}</h5>
+              <p>{exp.description}</p>
+            </li>
+          ))}
         </ul>
       </section>
     </div>
