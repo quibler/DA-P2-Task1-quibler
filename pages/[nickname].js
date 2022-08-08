@@ -29,7 +29,7 @@ const ProfilePage = ({ profile }) => {
   const deleteProfile = async () => {
     const nickname = router.query.nickname;
     try {
-      const deleted = await fetch(`/api/priofile/${nickname}`, {
+      const deleted = await fetch(`/api/profile/${nickname}`, {
         method: "Delete",
       });
 
