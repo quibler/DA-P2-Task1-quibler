@@ -1,4 +1,4 @@
-View the live demo [HERE!](https://da-p2-task1-quibler-nzhbrypdb-quibler.vercel.app/)
+View the live demo [HERE!](https://da-p2-task1-quibler.vercel.app/)
 
 ********************************************************************************************************
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
