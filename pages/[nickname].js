@@ -28,6 +28,10 @@ const ProfilePage = ({ profile }) => {
   };
   const deleteProfile = async () => {
     const nickname = router.query.nickname;
+    if (nickname === "quibler") {
+      console.log("Cant delete Quibler's Profile! Sorry");
+      return;
+    }
     try {
       const deleted = await fetch(`/api/profiles/${nickname}`, {
         method: "Delete",
@@ -47,7 +51,9 @@ const ProfilePage = ({ profile }) => {
         </button>
       </Link>
       <button
-        className="fixed top-4 right-4 bg-red-700 px-5 py-2 rounded-lg"
+        className={`fixed top-4 right-4 bg-red-700 px-5 py-2 rounded-lg ${
+          nickname === "quibler" ? "hidden" : ""
+        }`}
         onClick={deleteProfile}
       >
         Delete
@@ -78,7 +84,6 @@ const ProfilePage = ({ profile }) => {
               </span>
             </span>
           </h5>
-          {/* <span className="mt-4 text-black scrollNoti">(Keep scrolling)</span> */}
         </div>
       </section>
       <section className="grid grid-row-2 gap-4 place-content-center mx-auto w-[calc(100vw-2rem)] h-screen snap-start snap-always">

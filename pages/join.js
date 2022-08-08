@@ -136,7 +136,7 @@ const NewDogeProfile = () => {
         <section className="h-full grid place-content-center snap-start snap-always">
           {" "}
           <label>Your interests</label>
-          <ul className="flex flex-wrap gap-2" id="interests">
+          <ul className="flex flex-wrap gap-2 mx-4" id="interests">
             {interests.map((item, index) => (
               <li
                 key={index}
@@ -165,43 +165,43 @@ const NewDogeProfile = () => {
           </div>
         </section>
         <section className="h-full grid place-content-center snap-start snap-always">
-          <h1 className="mb-4">Last thing you worked on</h1>
-          <label>Title</label>
+          <h1 className="mb-4 mx-6">Last thing you worked on</h1>
+          <label className="mx-6">Title</label>
           <input
             type="text"
             id="latestWorkTitle"
             name="title"
-            className="text-black font-semibold"
+            className="text-black mx-6 font-semibold"
             onChange={handleLatestWorkInput}
           ></input>
-          <label>Description</label>
+          <label className="mx-6">Description</label>
           <textarea
             id="latestWorkDescription"
-            className="text-black font-semibold"
+            className="text-black mx-6 font-semibold"
             name="description"
             onChange={handleLatestWorkInput}
           ></textarea>
-          <label>Link to a screenshot of your work</label>
+          <label className="mx-6">Link to a screenshot of your work</label>
           <input
             type="text"
             id="img"
             name="img"
-            className="text-black font-semibold"
+            className="text-black mx-6 font-semibold"
             onChange={handleLatestWorkInput}
           ></input>
-          <label>Link to your work</label>
+          <label className="mx-6">Link to your work</label>
           <input
             type="text"
             id="url"
             name="url"
-            className="text-black font-semibold"
+            className="text-black mx-6 font-semibold"
             onChange={handleLatestWorkInput}
             onKeyUp={handleEnter}
           ></input>
         </section>
         <section className="h-full grid place-content-center snap-start snap-always">
-          <h1>Other things you have worked on</h1>
-          <div className="grid place-content-center">
+          <h1 className="mx-4">Other work</h1>
+          <div className="grid mx-4 place-content-center">
             <ul
               className="grid gap-2 px-2 max-h-80 text-xl overflow-y-scroll mb-4"
               id="experience"
