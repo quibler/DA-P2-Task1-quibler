@@ -62,6 +62,7 @@ const NewDogeProfile = () => {
   }
 
   function handleEnter(e) {
+    e.preventDefault();
     if (e.key === "Enter") {
       if (e.target.id === "nickname" && nickname === "") {
         alert("You must hava nickname!");

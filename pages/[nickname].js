@@ -29,7 +29,7 @@ const ProfilePage = ({ profile }) => {
   const deleteProfile = async () => {
     const nickname = router.query.nickname;
     try {
-      const deleted = await fetch(`http://localhost:3000/api/profiles/${nickname}`, {
+      const deleted = await fetch(`/${nickname}`, {
         method: "Delete",
       });
 
